@@ -1,0 +1,307 @@
+<div class="row">
+  <!-- Modal -->
+  <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modelTitleId">新建图书</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="book_name">书名</label>
+                <input type="text" class="form-control" id="book_name" placeholder="书名">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="book_author">作者</label>
+                <input type="text" class="form-control" id="book_author" placeholder="作者">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="book_publish">出版社</label>
+                <input type="text" class="form-control" id="book_publish" placeholder="出版社">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="book_id">编号</label>
+                <input type="text" class="form-control" id="book_id" placeholder="编号">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="book_type">类型</label>
+                <select id="book_type" class="form-control custon-select">
+                  <option selected>请选择...</option>
+                  <option>教辅</option>
+                  <option>小说</option>
+                  <option>文学</option>
+                  <option>传记</option>
+                  <option>管理</option>
+                  <option>历史</option>
+                  <option>哲学宗教</option>
+                  <option>亲子家教</option>
+                  <option>考试</option>
+                  <option>科技</option>
+                  <option>童书</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="book_address">存放分区</label>
+                <select id="book_address" class="form-control custon-select">
+                  <option selected>请选择...</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                  <option>D</option>
+                  <option>E</option>
+                  <option>F</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="book_shelf">存放书架</label>
+                <select id="book_shelf" class="form-control custon-select">
+                  <option selected>请选择...</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="book_state">当前状态</label>
+                <select id="book_state" class="form-control custon-select">
+                  <option selected>请选择...</option>
+                  <option value="0">在库</option>
+                  <option value="1">已借出</option>
+                </select>
+              </div>
+
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="book_pic_path">图片地址</label>
+                <input type="text" class="form-control" id="book_pic_path" placeholder="图片地址">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="book_borrow_time">借阅次数</label>
+                <input type="text" class="form-control" id="book_borrow_time" placeholder="借阅次数">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="book_price">价格</label>
+                <input type="text" class="form-control" id="book_price" placeholder="价格">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">离开</button>
+          <button type="button" class="btn btn-primary" id="new" onclick="cre()">保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <a name="" id="" class="btn btn-primary btn-block" href="#" role="button">占位</a>
+  </div>
+  <div class="col-lg-6">
+    <form>
+      <div class="form-row">
+        <div class="col-lg-8">
+          <input type="text" class="form-control" placeholder="输入书名" #search_name>
+        </div>
+        <div class="col-lg-2">
+          <button  (click)="GetBookFromNet(search_name.value)" type="button" class="btn btn-success">搜索</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<table class="table table-striped" xmlns="">
+  <thead>
+  <tr class="row">
+    <th class="col-lg-1"></th>
+    <th class="col-lg-1">书名</th>
+    <th class="col-lg-1">类型</th>
+    <th class="col-lg-1">作者</th>
+    <th class="col-lg-2">出版社</th>
+    <th class="col-lg-1">所在位置</th>
+    <th class="col-lg-1">状态</th>
+    <th class="col-lg-1">借阅次数</th>
+    <th class="col-lg-1">价格</th>
+    <th class="col-lg-1">操作</th>
+    <th class="col-lg-1">
+      <button type="button" class="btn btn-secondary btn-sm" href="#create" data-toggle="modal">新建</button>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of dataSet" class="row">
+    <th class="col-lg-1"></th>
+    <td class="col-lg-1"> {{ c.name }}</td>
+    <td class="col-lg-1"> {{ c.type }}</td>
+    <td class="col-lg-1"> {{ c.author }}</td>
+    <td class="col-lg-2"> {{ c.publish }}</td>
+    <td class="col-lg-1"> {{ c.address }} : {{ c.shelf }}</td>
+    <td class="col-lg-1"> {{ c.state }}</td>
+    <td class="col-lg-1"> {{ c.borrow_time }}</td>
+    <td class="col-lg-1"> {{ c.price }}</td>
+    <td class="col-lg-2">
+      <div class="row">
+        <div class="col-lg-5">
+          <a class="btn btn-block btn-primary" href="#u{{c.id}}" data-toggle="modal">修改</a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="u{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">修改图书</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="book_new_name_{{c.id}}">书名</label>
+                      <input type="text" class="form-control" id="book_new_name_{{c.id}}" value="{{c.name}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="book_new_author_{{c.id}}">作者</label>
+                      <input type="text" class="form-control" id="book_new_author_{{c.id}}" value="{{c.author}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="book_new_publish_{{c.id}}">出版社</label>
+                      <input type="text" class="form-control" id="book_new_publish_{{c.id}}" value="{{c.publish}}">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-2">
+                      <label for="book_new_id_{{c.id}}">编号</label>
+                      <input type="text" class="form-control" id="book_new_id_{{c.id}}" value="{{c.id}}">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="book_new_type_{{c.id}}">类型</label>
+                      <select id="book_new_type_{{c.id}}" class="form-control custon-select" value="{{c.type}}">
+                        <option selected>请选择...</option>
+                        <option>教辅</option>
+                        <option>小说</option>
+                        <option>文学</option>
+                        <option>传记</option>
+                        <option>管理</option>
+                        <option>历史</option>
+                        <option>哲学宗教</option>
+                        <option>亲子家教</option>
+                        <option>考试</option>
+                        <option>科技</option>
+                        <option>童书</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="book_new_address_{{c.id}}">存放分区</label>
+                      <select id="book_new_address_{{c.id}}" class="form-control custon-select" value="{{c.address}}">
+                        <option selected>请选择...</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="book_new_shelf_{{c.id}}">存放书架</label>
+                      <select id="book_new_shelf_{{c.id}}" class="form-control custon-select" value="{{c.shelf}}">
+                        <option selected>请选择...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="book_new_state_{{c.id}}">当前状态</label>
+                      <select id="book_new_state_{{c.id}}" class="form-control custon-select" value="{{c.state}}">
+                        <option selected>请选择...</option>
+                        <option>在库</option>
+                        <option>已借出</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="book_new_pic_path_{{c.id}}">图片地址</label>
+                      <input type="text" class="form-control" id="book_new_pic_path_{{c.id}}" placeholder="图片地址" value="{{c.pic_path}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="book_new_borrow_time_{{c.id}}">借阅次数</label>
+                      <input type="text" class="form-control" id="book_new_borrow_time_{{c.id}}" placeholder="借阅次数" value="{{c.borrow_time}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="book_new_price_{{c.id}}">价格</label>
+                      <input type="text" class="form-control" id="book_new_price_{{c.id}}" placeholder="价格" value="{{c.price}}">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">离开</button>
+                <button type="button" class="btn btn-primary" onclick="update(this)" id="_{{c.id}}">保存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <!-- Modal -->
+          <div class="modal fade" id="m{{c.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">警告</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                </div>
+                <div class="modal-body">
+                  一旦进行这个操作将无法撤回，确定删除？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-danger delete"id="{{c.id}}" onclick="del(this)">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-block btn-danger" data-toggle="modal" href="#m{{c.id}}">删除</a>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+
+</table>
+
+

@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Class-Path: spring-boot-starter-web-2.0.1.RELEASE.jar spring-beans-5.0
+ .5.RELEASE.jar jackson-annotations-2.9.0.jar spring-aop-5.0.5.RELEASE
+ .jar spring-expression-5.0.5.RELEASE.jar HikariCP-2.7.8.jar spring-bo
+ ot-starter-2.0.1.RELEASE.jar log4j-to-slf4j-2.10.0.jar slf4j-api-1.7.
+ 25.jar logback-classic-1.2.3.jar spring-boot-autoconfigure-2.0.1.RELE
+ ASE.jar spring-boot-starter-json-2.0.1.RELEASE.jar spring-tx-5.0.5.RE
+ LEASE.jar jackson-datatype-jdk8-2.9.5.jar spring-context-5.0.5.RELEAS
+ E.jar spring-boot-starter-tomcat-2.0.1.RELEASE.jar jackson-datatype-j
+ sr310-2.9.5.jar tomcat-embed-websocket-8.5.29.jar mybatis-3.4.6.jar s
+ pring-boot-starter-jdbc-2.0.1.RELEASE.jar mybatis-spring-boot-autocon
+ figure-1.3.2.jar jboss-logging-3.3.2.Final.jar tomcat-embed-el-8.5.29
+ .jar classmate-1.3.4.jar log4j-api-2.10.0.jar mybatis-spring-boot-sta
+ rter-1.3.2.jar logback-core-1.2.3.jar validation-api-2.0.1.Final.jar 
+ spring-web-5.0.5.RELEASE.jar spring-webmvc-5.0.5.RELEASE.jar jackson-
+ module-parameter-names-2.9.5.jar spring-core-5.0.5.RELEASE.jar jackso
+ n-core-2.9.5.jar mybatis-spring-1.3.2.jar spring-boot-starter-logging
+ -2.0.1.RELEASE.jar lombok-1.16.10.jar jul-to-slf4j-1.7.25.jar javax.a
+ nnotation-api-1.3.2.jar jackson-databind-2.9.5.jar spring-jdbc-5.0.5.
+ RELEASE.jar hibernate-validator-6.0.9.Final.jar spring-boot-2.0.1.REL
+ EASE.jar spring-boot-devtools-2.0.1.RELEASE.jar mysql-connector-java-
+ 5.1.46.jar snakeyaml-1.19.jar tomcat-embed-core-8.5.29.jar spring-jcl
+ -5.0.5.RELEASE.jar
+Main-Class: com.wmbt.bmsdemo.BmsDemoApplication
+
